@@ -10,6 +10,7 @@ dependencies:
 - diagrams-lib
 - diagrams-svg
 - diagrams-canvas
+- diagrams-contrib
 - lens
 - mfsolve
 - hashable
@@ -29,5 +30,4 @@ library:
   - Circuitry.Machinery
   - Circuitry.Misc
   - Circuitry.Backend
-  - Diagrams.TwoD.Layout.Constrained
   other-modules: []

@@ -11,7 +11,7 @@ import           Control.Monad (forM_)
 import           Control.Monad.State.Class
 import           Control.Monad.Trans (lift)
 import           Control.Monad.Trans.Class
-import           Control.Monad.Trans.State.Strict (StateT, execStateT)
+import           Control.Monad.Trans.State (StateT, execStateT)
 import           Data.Hashable
 import           Data.Map.Strict (Map)
 import           Data.Maybe (fromJust)
@@ -30,8 +30,8 @@ type Circuit' s = Circuit s B Double Any
 runCircuit :: (C n m, Show n) => (forall s. Circuit s b n m a) -> QDiagram b V2 n m
 -- TODO(sandy): this is probably ok
 runCircuit (Circuit dsl) = let c      = execStateT dsl def
-                               (s, d) = C.layout $ unsafeCoerce c
-                            in d # view compose s
+                               d = C.layout $ unsafeCoerce c
+                            in d
 
 liftCircuit :: (C.Constrained s b n m) a -> Circuit s b n m a
 liftCircuit = Circuit . lift

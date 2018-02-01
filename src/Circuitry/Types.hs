@@ -15,7 +15,7 @@ import Control.Lens
 import Control.Monad.Fix
 import Control.Monad.State.Class
 import Control.Monad.Trans.Class
-import Control.Monad.Trans.State.Strict (StateT)
+import Control.Monad.Trans.State (StateT, State)
 import Data.Hashable
 import Data.Map (Map)
 import qualified Data.Map as M (empty)
@@ -37,7 +37,7 @@ type C n m = (Hashable n, Semigroup m, RealFrac n, Floating n, Monoid m)
 
 newtype Circuit s b n m a = Circuit
     { unCircuit :: StateT (CircuitState s b n m)
-                          (Constrained s b n m) a
+                          (State (ConstrainedState s b n m)) a
     }
     deriving ( Functor
              , Applicative
