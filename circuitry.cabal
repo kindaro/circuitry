@@ -42,3 +42,29 @@ library
                , base64-bytestring
   hs-source-dirs:      src
   default-language:    Haskell2010
+
+test-suite multimeter
+  type: exitcode-stdio-1.0
+  main-is: Test.hs
+  hs-source-dirs:
+    test
+  ghc-options: -Wall
+  other-modules: Test.Wire 
+  default-language: Haskell2010
+  build-depends: base >=4.9 && <4.10
+               , diagrams
+               , diagrams-lib
+               , diagrams-svg
+               , diagrams-canvas
+               , lens
+               , mfsolve
+               , hashable
+               , mtl
+               , containers
+               , transformers
+               , bytestring
+               , svg-builder
+               , string-conv
+               , directory
+               , filepath
+               , circuitry
