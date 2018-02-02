@@ -17,4 +17,10 @@ main = do
     etalon <- C8.readFile (cwd </> "test/Wire.svg")
     if etalon == (toSvg circuit)
         then putStrLn "Test passed."
-        else error "Test failed."
+        else do
+            putStrLn "Test failed!"
+            putStrLn "The goal was:"
+            C8.putStrLn etalon
+            putStrLn "Instead, received:"
+            C8.putStrLn (toSvg circuit)
+            error "Test failed -- exit with error."
